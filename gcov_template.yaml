@@ -217,7 +217,7 @@ runconfig:
                 upsample_radargrid: False
 
                 # OPTIONAL - Same as input DEM if not provided.
-                output_epsg:
+                output_epsg: $epsg
 
                 # OPTIONAL - Spacing between pixels, in same units as output EPSG.
                 # If not provided, spacing values will be taken from provided DEM.
@@ -225,8 +225,8 @@ runconfig:
                 # ISCE3 output rasters always have North-up West-left orientation
                 output_posting:
                     A:
-                        x_posting:
-                        y_posting:
+                        x_posting: $xposting
+                        y_posting: $yposting
                     B:
                         x_posting:
                         y_posting:
