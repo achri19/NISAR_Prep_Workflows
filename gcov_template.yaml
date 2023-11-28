@@ -261,7 +261,7 @@ runconfig:
                 heights:
 
                 # OPTIONAL - Same as the geocode group output_epsg if not provided
-                output_epsg:
+                output_epsg: $epsg
 
                 # OPTIONAL - Spacing between pixels, in same units as output EPSG.
                 # If not provided, spacing values will be taken from geocode group
@@ -269,8 +269,8 @@ runconfig:
                 # All postings/spacings must be > 0.
                 # ISCE3 output rasters always have North-up West-left orientation
                 output_posting:
-                    x_posting:
-                    y_posting:
+                    x_posting: $xposting
+                    y_posting: $yposting
 
                 # OPTIONAL - To control output grid in same units as output EPSG
                 y_snap:
