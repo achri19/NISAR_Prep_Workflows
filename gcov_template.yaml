@@ -240,14 +240,14 @@ runconfig:
                 # OPTIONAL - Can control with absolute values or with snap values
                 top_left:
                     # OPTIONAL - Set top-left y in same units as output EPSG
-                    y_abs:
+                    y_abs: $top_left_y
                     # OPTIONAL - Set top-left x in same units as output EPSG
-                    x_abs:
+                    x_abs: $top_left_x
 
                 # OPTIONAL - Can control with absolute values or with snap values
                 bottom_right:
-                    y_abs:
-                    x_abs:
+                    y_abs: $bottom_right_y
+                    x_abs: $bottom_right_x
 
                 # Minimum block size in MB per thread
                 min_block_size:
@@ -261,7 +261,7 @@ runconfig:
                 heights:
 
                 # OPTIONAL - Same as the geocode group output_epsg if not provided
-                output_epsg: $epsg
+                output_epsg: 
 
                 # OPTIONAL - Spacing between pixels, in same units as output EPSG.
                 # If not provided, spacing values will be taken from geocode group
@@ -269,8 +269,8 @@ runconfig:
                 # All postings/spacings must be > 0.
                 # ISCE3 output rasters always have North-up West-left orientation
                 output_posting:
-                    x_posting: $xposting
-                    y_posting: $yposting
+                    x_posting: 
+                    y_posting: 
 
                 # OPTIONAL - To control output grid in same units as output EPSG
                 y_snap:
