@@ -232,10 +232,10 @@ runconfig:
                         y_posting:
 
                 # OPTIONAL - To control output grid in same units as output EPSG
-                y_snap:
+                y_snap: $y_snap
 
                 # OPTIONAL - To control output grid in same units as output EPSG
-                x_snap:
+                x_snap: $x_snap
 
                 # OPTIONAL - Can control with absolute values or with snap values
                 top_left:
