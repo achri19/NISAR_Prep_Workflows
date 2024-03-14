@@ -6,7 +6,8 @@ This repo contains notebooks for preparing for the NISAR Ecosystems ATBD noteboo
 ## Conversions_ALOS2-SLC_to_NISAR-GCOV.ipynb
 This notebook runs downloads ALOS2 SLC data (access restricted), converts to NISAR RSLC and NISAR GCOV using ISCE3
 
-*Requires the gcov.yaml file
+## Conversions_ALOS1-L1.0_to_NISAR-GCOV.ipynb
+This notebook runs downloads ALOS1 L1.0 data (queried from ASF DAAC), converts to NISAR L0B, NISAR RSLC, and NISAR GCOV using ISCE3
 
 # Prepare Input Files
 ## Ecosystems_InputPrep_NISAR.ipynb
