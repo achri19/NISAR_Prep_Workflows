@@ -1,0 +1,203 @@
+runconfig:
+    groups:
+        input_file_group:
+            input_file_path:
+            -   /scratch/vbrancat/data/NISAR/ALOS/Hawaii/20110119/ALPSRP265743230-H1.0__D.h5
+            qa_input_file: ./slc.h5
+        dynamic_ancillary_file_group:
+            dem_file:
+            dem_file_description:
+            orbit:
+            pointing:
+            external_calibration:
+            internal_calibration:
+            antenna_pattern:
+            corner_reflector_file:
+        product_path_group:
+            product_path: output_rslc
+            scratch_path: scratch_rslc
+            sas_output_file: output_rslc/rslc_20110119.h5
+            sas_config_file: runconfig_rslc_20110119.yaml
+            qa_output_dir: ./qa
+        primary_executable:
+            product_type: RSLC
+            product_version: 0.1.0
+            processing_type: CUSTOM
+            mission_id:
+            processing_center: JPL
+            partial_granule_id: None
+        geometry:
+            relative_orbit_number: 1
+            frame_number: 1
+        worker:
+            gpu_enabled: true
+            gpu_id: 1
+        processing:
+            output_grid:
+                start_time:
+                end_time:
+                start_range:
+                end_range:
+                output_prf:
+                time_snap_interval: 1.0
+            ephemeris_crop_pad: 10.0
+            range_window:
+                kind: Kaiser
+                shape: 3.0
+            azimuth_window:
+                kind: Kaiser
+                shape: 0.0
+            radio_frequency_interference:
+                detection_enabled: true
+                mitigation_enabled: false
+                mitigation_algorithm: ST-EVD
+                cpi_length: 32
+                num_range_blocks: 1
+                max_emitters: 16
+                num_max_trim: 0
+                num_min_trim: 0
+                max_num_rfi_ev: 2
+                num_cpi_per_threshold_block: 20
+                threshold_hyperparameters:
+                    x:
+                    -   2.0
+                    -   20.0
+                    y:
+                    -   5.0
+                    -   20.0
+            range_common_band_filter:
+                attenuation: 40.0
+                width: 0.15
+            rdr2geo:
+                tol_height: 1e-05
+                look_min_deg: 0.0
+                look_max_deg: 90.0
+            geo2rdr:
+                tol_aztime: 1e-07
+                time_start:
+                time_end:
+            doppler:
+                azimuth_boresight_deg: 0.0
+                interp_method: bilinear
+                spacing:
+                    range: 2000.0
+                    azimuth: 1.0
+                rdr2geo:
+                    threshold: 1e-08
+                    maxiter: 25
+                    extraiter: 15
+            rangecomp:
+                mode: full
+                block_size:
+                    range: 0
+                    azimuth: 1024
+            azcomp:
+                block_size:
+                    range: 128
+                    azimuth: 128
+                azimuth_resolution: 6.0
+                kernel:
+                    type: Knab
+                    halfwidth: 4
+                    approx_oversample: 1.7
+                    fit: Table
+                    fit_order: 2048
+                rdr2geo:
+                    threshold: 1e-08
+                    maxiter: 25
+                    extraiter: 15
+                geo2rdr:
+                    threshold: 1e-08
+                    maxiter: 50
+                    delta_range: 10.0
+            dry_troposphere_model: nodelay
+            dem:
+                reference_height: 1500.0
+                interp_method: biquintic
+            nominal_antenna_size:
+                range: 12.0
+                azimuth: 12.0
+            encoding_scale_factor: 0.01
+            delete_tempfiles: true
+            debug_dump_height: false
+            is_enabled:
+                presum_blu: true
+                rangecomp: true
+                eap: false
+                range_cor: true
+                azcomp: true
+                rfi_removal: true
+        output:
+            data_type: complex64_zero_mantissa
+            compression_enabled: true
+            compression_type: gzip
+            compression_level: 4
+            chunk_size:
+            -   128
+            -   128
+            shuffle: true
+            mantissa_nbits: 10
+        qa:
+            workflows:
+                validate: true
+                qa_reports: true
+                absolute_radiometric_calibration: true
+                noise_estimation: true
+                point_target_analyzer: true
+            qa_reports:
+                backscatter_img:
+                    linear_units: true
+                    nlooks_freqa:
+                    nlooks_freqb:
+                    longest_side_max: 2048
+                    percentile_for_clipping:
+                    -   5.0
+                    -   95.0
+                    gamma: 0.5
+                    tile_shape:
+                    -   1024
+                    -   1024
+                histogram:
+                    decimation_ratio:
+                    -   10
+                    -   10
+                    backscatter_histogram_bin_edges_range:
+                    -   -80.0
+                    -   20.0
+                    phs_in_radians: true
+                    tile_shape:
+                    -   1024
+                    -   -1
+                range_spectra:
+                    az_decimation: 8
+                    hz_to_mhz: true
+                    tile_height: 512
+            absolute_radiometric_calibration:
+                nchip: 64
+                upsample_factor: 32
+                peak_find_domain: time
+                nfit: 5
+                power_method: box
+                power_threshold: 3.0
+            point_target_analyzer:
+                nchip: 64
+                upsample_factor: 32
+                peak_find_domain: time
+                num_sidelobes: 10
+                predict_null: true
+                fs_bw_ratio: 1.2
+                window_type: rect
+                window_parameter: 0.0
+            noise_estimation:
+                freq_group:
+                pol:
+                rng_start:
+                rng_stop:
+                algorithm: avg
+                cpi: 2
+        pge_name_group:
+            pge_name: RSLC_L_PGE
+        archive: {}
+        qaqc: {}
+        profiler: {}
+    name: NISAR_L1-L-RSLC_RUNCONFIG
